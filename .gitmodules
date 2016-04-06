@@ -1,0 +1,3 @@
+[submodule "webgui/webgui/address_utils"]
+	path = webgui/webgui/address_utils
+	url = git@github.com:nextgis/address_utils.git
