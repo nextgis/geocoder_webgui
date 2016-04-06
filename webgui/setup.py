@@ -13,6 +13,8 @@ requires = [
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
     'waitress',
+    'sqlalchemy',
+    'psycopg2',
     ]
 
 setup(name='webgui',
