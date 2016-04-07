@@ -14,7 +14,14 @@
 	<input type="text" name="count" value=5><br>
 	<input type="submit" value="Submit">
 	</form>
-    <p>${address}</p>
+	<div tal:condition="address">
+	      <p>Address:</p>
+	        <ul>
+		    <li tal:repeat="addr address">  
+		 	<div tal:content="addr.count"/> <div tal:content="addr.addr"/>
+			</li> 
+	      </ul>
+    </div>
     </body>
 </html>
 
