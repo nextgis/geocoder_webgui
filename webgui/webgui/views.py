@@ -3,8 +3,9 @@
 from pyramid.view import view_config
 from sqlalchemy import create_engine
 
-from address_utils.postgres.models import Name
-from address_utils.postgres.models import Base, DBSession
+from address_utils.postgres.models import Name, AddressParser
+from address_utils.postgres.models import Base
+from address_utils.postgres import DBSession
 
 
 # FIXME: move connection string to config file
@@ -30,7 +31,9 @@ def address_parser(request):
         count = 5
 
     # import ipdb; ipdb.set_trace()
-    addresses = Name.extract_addresses(input_address)
-    addresses = [{'addr': a[0], 'count': a[1]} for a in addresses.most_common(count)]
+    session = DBSession()
+    parser = AddressParser()
+    addresses = parser.parse_address(session, input_address, count)
+    addresses = [{'addr': a[0], 'count': a[1]} for a in addresses]
 
     return {'input_address': input_address, 'address': addresses}
