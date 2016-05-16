@@ -8,14 +8,14 @@
 </head>
     <body>
 	<form action="" method="post">
-	Address:<br>
+		Address:<br>
 	<input type="text" name="address" value=${input_address}><br>
 	Results:<br>
 	<input type="text" name="count" value=5><br>
 	<input type="submit" value="Submit">
 	</form>
 	<div tal:condition="address">
-	      <p>Address:</p>
+	      <p>Address: ${input_address}</p>
 	        <ul>
 		    <li tal:repeat="addr address">  
 		 	<div tal:content="addr.count"/> <div tal:content="addr.addr"/>
